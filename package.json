@@ -39,7 +39,7 @@
     "pre-commit": "1.2.0",
     "semantic-release": "6.3.6",
     "simple-commit-message": "3.2.0",
-    "standard": "10.0.2"
+    "standard": "10.0.3"
   },
   "files": [
     "index.js",
