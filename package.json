@@ -35,7 +35,7 @@
     "mukla": "0.4.9",
     "npm-run-all": "4.0.2",
     "nsp": "2.6.3",
-    "nyc": "11.1.0",
+    "nyc": "11.2.1",
     "pre-commit": "1.2.0",
     "semantic-release": "6.3.6",
     "simple-commit-message": "3.2.0",
