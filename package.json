@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "camelcase": "4.1.0",
-    "dateformat": "2.0.0",
+    "dateformat": "2.1.0",
     "fs-exists-sync": "0.1.0",
     "jstransformer": "1.0.0",
     "jstransformer-j140": "1.0.0",
