@@ -34,7 +34,7 @@
     "eslint": "4.2.0",
     "mukla": "0.4.9",
     "npm-run-all": "4.0.2",
-    "nsp": "2.6.3",
+    "nsp": "2.8.1",
     "nyc": "11.1.0",
     "pre-commit": "1.2.0",
     "semantic-release": "6.3.6",
