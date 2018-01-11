@@ -26,7 +26,7 @@
     "fs-exists-sync": "0.1.0",
     "jstransformer": "1.0.0",
     "jstransformer-j140": "1.0.0",
-    "jstransformer-jstransformer": "1.1.5",
+    "jstransformer-jstransformer": "1.1.6",
     "stream-copy-dir": "1.0.0"
   },
   "devDependencies": {
