@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "dependency-check": "2.9.1",
-    "eslint": "4.2.0",
+    "eslint": "4.18.0",
     "mukla": "0.4.9",
     "npm-run-all": "4.0.2",
     "nsp": "2.8.1",
