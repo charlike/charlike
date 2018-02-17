@@ -694,7 +694,7 @@ del@^2.0.2:
     pinkie-promise "^2.0.0"
     rimraf "^2.2.8"
 
-dependency-check@^2.9.1:
+dependency-check@2.10.0:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/dependency-check/-/dependency-check-2.10.0.tgz#3cf866290efd284b471afe80c09861ee6f78d36d"
   dependencies:
@@ -808,7 +808,7 @@ eslint-config-airbnb@16.1.0:
   dependencies:
     eslint-config-airbnb-base "^12.1.0"
 
-eslint-config-tunnckocore@^1.0.1:
+eslint-config-tunnckocore@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/eslint-config-tunnckocore/-/eslint-config-tunnckocore-1.0.1.tgz#a559c43e63b07d6d317ca02a27eaf958ef1a83d1"
   dependencies:
@@ -908,7 +908,7 @@ eslint-visitor-keys@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
 
-eslint@^4.18.0:
+eslint@4.18.0:
   version "4.18.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.18.0.tgz#ebd0ba795af6dc59aa5cee17938160af5950e051"
   dependencies:
@@ -1212,7 +1212,7 @@ get-stream@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
 
-gitcommit@^0.2.4:
+gitcommit@0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/gitcommit/-/gitcommit-0.2.4.tgz#39a23e1f58b8ffb1602a5c5f65570b93418785ee"
   dependencies:
@@ -1962,7 +1962,7 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-mukla@^0.4.9:
+mukla@0.4.9:
   version "0.4.9"
   resolved "https://registry.yarnpkg.com/mukla/-/mukla-0.4.9.tgz#195cf3954154597e35599fdbb4a13c2a41d733f4"
   dependencies:
@@ -1982,7 +1982,7 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-new-release@^4.0.1:
+new-release@4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.1.tgz#fcb653ad48827698d7d770fd07c216078a547bc5"
   dependencies:
@@ -2020,7 +2020,7 @@ normalize-path@^2.0.1:
   dependencies:
     remove-trailing-separator "^1.0.1"
 
-npm-run-all@^4.0.2:
+npm-run-all@4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/npm-run-all/-/npm-run-all-4.1.2.tgz#90d62d078792d20669139e718621186656cea056"
   dependencies:
@@ -2040,7 +2040,7 @@ npm-run-path@^2.0.0:
   dependencies:
     path-key "^2.0.0"
 
-nsp@^2.8.1:
+nsp@2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/nsp/-/nsp-2.8.1.tgz#436e3f13869e0610d3a38f59d55f9b353cc32817"
   dependencies:
@@ -2060,7 +2060,7 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nyc@^11.4.1:
+nyc@11.4.1:
   version "11.4.1"
   resolved "https://registry.yarnpkg.com/nyc/-/nyc-11.4.1.tgz#13fdf7e7ef22d027c61d174758f6978a68f4f5e5"
   dependencies:
