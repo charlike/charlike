@@ -1,18 +1,11 @@
 {
   "statements": 85,
-  "branches": 68,
+  "branches": 65,
   "functions": 82,
   "lines": 84,
   "cache": true,
   "check-coverage": true,
   "require": "esm",
-  "include": [
-    "src/**/*.js"
-  ],
-  "exclude": [
-    "src/cjs-globals.js",
-    "*.test.js",
-    "**/*.test.js",
-    "test"
-  ]
+  "include": ["src/**/*.js"],
+  "exclude": ["src/cjs-globals.js", "*.test.js", "**/*.test.js", "test"]
 }
