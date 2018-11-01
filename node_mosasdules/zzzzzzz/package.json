@@ -1,12 +1,12 @@
 {
-  "name": "charlike",
-  "description": "Small & fast project scaffolder with sane defaults. Supports hundreds of template engines through the @JSTransformers API or if you want custom `render` function passed through options",
+  "name": "@aaa/zzzzzzz",
+  "description": "quxie hoohy bar desc, that was easy!!!",
   "license": "Apache-2.0",
-  "licenseStart": "2016",
+  "licenseStart": "2018",
   "scripts": {
     "docs": "docks --outfile .verb.md && verb",
     "lint": "eslint src test --cache --fix --quiet --format codeframe",
-    "test": "nyc asia",
+    "test": "nyc --require esm asia -R codeframe",
     "commit-dry": "git status --porcelain && git add -A && gitcommit -sS",
     "precommit": "lint-staged && yarn test",
     "commit": "yarn commit-dry"
@@ -15,23 +15,12 @@
     "node": "^8.11.0 || ^10.12.0"
   },
   "dependencies": {
-    "camelcase": "^5.0.0",
-    "dateformat": "^3.0.3",
-    "esm": "^3.0.84",
-    "git-config-path": "^1.0.1",
-    "git-user-email": "^0.2.2",
-    "git-user-name": "^2.0.0",
-    "git-username": "^1.0.0",
-    "jstransformer": "^1.0.0",
-    "jstransformer-j140": "^1.0.0",
-    "jstransformer-jstransformer": "^1.1.6",
-    "parse-git-config": "^2.0.3",
-    "stream-copy-dir": "^1.0.0"
+    "esm": "^3.0.84"
   },
   "devDependencies": {
     "all-contributors-cli": "^5.4.0",
     "asia": "^0.19.7",
-    "docks": "^0.6.0",
+    "docks":"^0.6.0",
     "eslint": "^5.8.0",
     "eslint-config-esmc": "^1.0.12",
     "gitcommit": "^1.0.9",
@@ -48,8 +37,8 @@
   "module": "src/index.js",
   "typings": "src/index.d.ts",
   "version": "0.0.0-semantically-released",
-  "repository": "tunnckoCoreLabs/charlike",
-  "homepage": "https://github.com/tunnckoCoreLabs/charlike",
+  "repository": "tunnckoCore/zzzzzzz",
+  "homepage": "https://github.com/tunnckoCore/zzzzzzz",
   "author": "Charlike Mike Reagent (https://tunnckocore.com)",
   "publishConfig": {
     "access": "public",
@@ -80,13 +69,12 @@
     "related": {
       "list": [
         "asia",
-        "charlike-cli",
+        "charlike",
         "docks",
         "gitcommit",
         "new-release",
-        "jstransformer"
-      ],
-      "highlight": "charlike-cli"
+        "parse-commit-message"
+      ]
     },
     "lint": {
       "reflinks": true

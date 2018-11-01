@@ -1,7 +1,7 @@
 version: 2
 
 workdir: &workdir
-  working_directory: ~/charlike
+  working_directory: ~/zzzzzzz
 
 # node8osx: &node8osx
 #   <<: *workdir
@@ -26,9 +26,9 @@ node10linux: &node10linux
 restore_modules_cache: &restore_modules_cache
   restore_cache:
     keys:
-      - charlike-{{ checksum "yarn.lock" }}
+      - zzzzzzz-{{ checksum "yarn.lock" }}
       # fallback to using the latest cache if no exact match is found
-      - charlike-
+      - zzzzzzz-
 
 # jobinstall: &jobinstall
 #   steps:
@@ -41,7 +41,7 @@ restore_modules_cache: &restore_modules_cache
 #         name: Installing project dependencies
 #         command: pnpm run inst
 #     - save_cache:
-#         key: charlike-{{ checksum "yarn.lock" }}
+#         key: zzzzzzz-{{ checksum "yarn.lock" }}
 #         paths: node_modules
 #     - run:
 #         name: Remove node_modules to cleanup workspace
@@ -58,7 +58,7 @@ jobtest: &jobtest
         name: Testing your project
         command: yarn test
     - save_cache:
-        key: charlike-{{ checksum "yarn.lock" }}
+        key: zzzzzzz-{{ checksum "yarn.lock" }}
         paths: node_modules
     - run:
         name: Sending test coverage to CodeCov

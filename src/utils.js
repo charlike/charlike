@@ -1,10 +1,3 @@
-/**
- * @copyright 2016-present, Charlike Mike Reagent <olsten.larck@gmail.com>
- * @license Apache-2.0
- */
-
-/* eslint-disable import/no-nodejs-modules */
-
 import fs from 'fs';
 import streamCopyDir from 'stream-copy-dir';
 import gitconfig from 'git-config-path';
@@ -53,5 +46,7 @@ export function gitGlobalUsername(options) {
   const gc = gitconfig(opt);
   const opts = Object.assign({ cwd: '/', path: gc }, options);
   const config = parse.sync(opts) || {};
-  return config.user && config.user.username ? config.user.username : gitUsername();
+  return config.user && config.user.username
+    ? config.user.username
+    : gitUsername();
 }

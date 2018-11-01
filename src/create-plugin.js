@@ -1,8 +1,3 @@
-/**
- * @copyright 2016-present, Charlike Mike Reagent <olsten.larck@gmail.com>
- * @license Apache-2.0
- */
-
 import camelcase from 'camelcase';
 import dateformat from 'dateformat';
 import JSTransformer from 'jstransformer';
@@ -23,7 +18,8 @@ const transformer = JSTransformer(jstransformer);
  * @returns Function
  * @private
  */
-export default function createPlugin(settings = {}) {
+export default function createPlugin(settings) {
+  settings = Object.assign({ opts: {} }, settings); // eslint-disable-line no-param-reassign
   return function plugin(file, cb) {
     // convert templates names to normal names
 
@@ -92,7 +88,8 @@ export default function createPlugin(settings = {}) {
     const input = file.contents.toString();
 
     if (typeof opts.render === 'function') {
-      file.contents = Buffer.from(opts.render(input, locals, file)); // eslint-disable-line
+      // eslint-disable-next-line no-param-reassign
+      file.contents = Buffer.from(opts.render(input, locals, file));
       cb(null, file);
       return;
     }
@@ -100,7 +97,8 @@ export default function createPlugin(settings = {}) {
     opts.engine = typeof opts.engine === 'string' ? opts.engine : 'j140';
     const result = transformer.render(input, opts, locals);
 
-    file.contents = Buffer.from(result.body); // eslint-disable-line
+    // eslint-disable-next-line no-param-reassign
+    file.contents = Buffer.from(result.body);
     cb(null, file);
   };
 }

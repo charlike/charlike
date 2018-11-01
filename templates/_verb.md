@@ -2,6 +2,8 @@
 
 > {%= description %}
 
+Please consider following this project's author, [#{author.name}](https://github.com/#{author.username}), and :star: the project to show your :heart: and support.
+
 <div id="thetop"></div>
 
 [![Code style][codestyle-img]][codestyle-url]
