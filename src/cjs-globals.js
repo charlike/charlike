@@ -1,1 +1,3 @@
-module.exports = { __dirname };
+'use strict';
+
+module.exports = { __dirname, __filename };

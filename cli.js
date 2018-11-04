@@ -1,102 +1,95 @@
 #!/usr/bin/env node
 
-'use strict';
-
 const proc = require('process');
-const getPkg = require('@tunnckocore/package-json').default;
-const autoUpdater = require('auto-install-updates');
 const mri = require('mri');
+const set = require('set-value');
+
 const pkg = require('./package.json');
+const charlike = require('./index');
 
-autoUpdater({ pkg, updateCheckInterval: 1000 * 60 * 3 });
+function showHelp() {
+  return `  charlike v${pkg.version}
+  ${pkg.description}
 
-const cli = mri(proc.argv.slice(2), {
+  Usage: charlike [name] [description] [flags]
+
+  Common Flags:
+    -h, --help                Display this help.
+    -v, --version             Display current version.
+
+  Flags:
+    -n, --name                Project's name.
+    -d, --desc                Project description, short for "--project.description".
+    -o, --owner               Usually your GitHub username or organization.
+    -t, --templates           Source templates directory.
+    --engine                  Engine to be used in the template files.
+    --locals                  Locals for the template files. Support dot notation.
+    --project                 Project metadata like name, description, author
+    --project.name            Project name.
+    --project.description     Project description.
+    --project.author.name     Project's author name.
+    --cwd                     Folder to be used as current working dir.
+
+  Examples:
+    charlike --project.name foobar --project.author 'John Snow'
+    charlike foobar --project.author.name 'John Snow'
+    charlike foobar --locals.license 'Apache-2.0' --locals.foo bar
+    charlike foobar 'This is description'
+    charlike foobar --project.description 'Some description here'
+    charlike foobar --desc 'Some description here'
+    charlike foobar 'Awesome description' --owner tunnckoCoreLabs
+    charlike --project.name qux --desc 'Yeah descr' --owner tunnckoCore
+  `;
+}
+
+const argv = mri(proc.argv.slice(2), {
   alias: {
-    owner: 'o',
-    name: 'n',
-    desc: 'd',
-    repo: 'r',
-    engine: 'e',
-    licenseStart: 'l',
-    locals: 'L',
-    templates: 't',
-    help: 'h',
-    version: 'v',
+    v: 'version',
+    h: 'help',
+    o: 'owner',
+    d: 'desc',
+    t: 'templates',
   },
 });
 
-const charlike = require('./index');
+const options = Object.keys(argv).reduce((acc, key) => {
+  set(acc, key, argv[key]);
+  return acc;
+}, {});
 
-proc.title = 'charlike-cli';
+const name = argv._[0];
+const desc = argv._[1];
 
-const name = cli._[0] || cli.name;
-const desc = cli._[1] || cli.desc;
+options.locals = Object.assign({}, options.locals);
+options.project = Object.assign({}, options.project);
+options.project.name = name || options.project.name;
+options.project.description = desc;
+options.project.owner = options.owner;
 
-delete cli._;
-
-function get(pkgName, field = 'version') {
-  return getPkg(pkgName).then((pkg) => pkg[field]);
+if (!options.project.name) {
+  console.error('At least project name is required.');
+  console.error(showHelp());
+  proc.exit(1);
 }
 
-async function showHelp(status = 0) {
-  console.log(`
-  (charlike v${await get('charlike')})
-  ${await get('charlike', 'description')}
-
-  Usage
-    $ charlike <name> <description> [flags]
-
-  Common Flags
-    --help              Show this output
-    --version           Show version
-
-  Options
-    --owner, -o         Project github owner - username or organization
-    --name, -n          Name of the project, same as to pass first param
-    --desc, -d          Project description, same as to pass second param
-    --repo, -r          Repository pattern like username/projectName
-    --engine, -e        Engine to be used, j140 by default
-    --licenseStart, -l  License start year
-    --locals, -L        Context to pass to template files
-    --templates, -t     Path to templates folder
-    --cwd               Folder to be used as current working dir
-
-  Examples
-    $ charlike my-awesome-project 'some cool description'
-    $ charlike minibase-data 'we are awesome' --owner node-minibase
-    $ charlike --desc 'abc description here' -n beta-trans -o gulpjs
-
-  Issues: ${await get('charlike', 'homepage')}
-`);
-
-  if (status !== 1) {
-    throw new Error('charlike: foo');
-  }
-
-  proc.exit(status);
+if (argv.help) {
+  console.log(showHelp());
+  proc.exit(0);
 }
 
-if (cli.help) {
-  showHelp();
+if (argv.version) {
+  console.log(pkg.version);
+  proc.exit(0);
 }
 
-if (!name || !desc) {
-  showHelp(1).catch(() => proc.exit(1));
-} else {
-  cli.description = desc;
+/* eslint-disable promise/always-return */
 
-  /* eslint-disable promise/always-return */
-
-  charlike(name, desc, cli)
-    .then((dest) => {
-      console.log(`Project "${name}" scaffolded to "${dest}"`);
-    })
-    .catch((err) => {
-      /* istanbul ignore next */
-      console.error(`Sorry, some error occured!`);
-      /* istanbul ignore next */
-      console.error(`ERROR: ${err.message}`);
-      /* istanbul ignore next */
-      proc.exit(1);
-    });
-}
+charlike(options)
+  .then(({ project = {} } = {}) => {
+    console.log('Project is generated at', project.dest);
+  })
+  .catch((err) => {
+    console.error('Oooh! Some error occured.');
+    console.error(argv.verbose ? err.stack : err.message);
+    proc.exit(1);
+  });

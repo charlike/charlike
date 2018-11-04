@@ -1,6 +1,5 @@
 dist
 charlike
-templates
 
 # Lockfiles. We use Yarn (https://yarnpkg.com/)
 package-lock.json
