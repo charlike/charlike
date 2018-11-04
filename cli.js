@@ -5,7 +5,7 @@ const mri = require('mri');
 const set = require('set-value');
 const objectAssign = require('object-assign-deep');
 
-const defaults = require('./src/default');
+const defaults = require('./src/defaults');
 const pkg = require('./package.json');
 const charlike = require('./index');
 
