@@ -1,6 +1,6 @@
 {
   "name": "charlike",
-  "description": "Small, fast and streaming project scaffolder with support for hundreds of template engines and sane defaults.",
+  "description": "Small, fast and streaming project scaffolder with support for hunderds of template engines and sane defaults",
   "license": "Apache-2.0",
   "licenseStart": "2016",
   "scripts": {
@@ -35,10 +35,11 @@
   },
   "files": [
     "src",
-    "templates",
+    "index.js",
     "cli.js",
-    "index.js"
+    "templates"
   ],
+  "bin": "cli.js",
   "main": "index.js",
   "module": "src/index.js",
   "typings": "src/index.d.ts",
@@ -75,8 +76,7 @@
         "@tunnckocore/create-project",
         "@tunnckocore/update",
         "@tunnckocore/config",
-        "@tunnckocore/scripts",
-        "execa"
+        "@tunnckocore/scripts"
       ]
     },
     "lint": {

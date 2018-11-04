@@ -2,6 +2,7 @@
   "name": "<%= project.name %>",
   "description": "<%= project.description %>",
   "license": "<%= license.name %>",
+  "licenseStart": "<%= license.year %>",
   "scripts": {
     "start": "tunnckocore-scripts",
     "extends": "@tunnckocore/config/scripts",

@@ -58,7 +58,7 @@ $ yarn add {%= name %}
 
 **[back to top](#thetop)**
 
-{% if (verb.related && verb.related.list && verb.related.list.length) { %>
+{% if (verb.related && verb.related.list && verb.related.list.length) { %}
 
 ## See Also
 
@@ -79,7 +79,7 @@ For bugs reports and feature requests, [please create an issue][open-issue-url] 
 
 ### Support the project
 
-[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/{%= name %} sites too! :rocket:
+[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/{%= name %}) sites too! :rocket:
 
 Not financial support? Okey! [Pull requests](https://github.com/tunnckoCoreLabs/contributing#opening-a-pull-request), stars and all kind of [contributions](https://opensource.guide/how-to-contribute/#what-it-means-to-contribute) are always
 welcome. :sparkles:
@@ -112,17 +112,15 @@ here](https://github.com/jfmengels/all-contributors-cli#usage).
 
 Consider showing your [support](#support-the-project) to them. :sparkling_heart:
 
-**[back to top](#thetop)**
-
 ## License
 
-Copyright (c) <%= license.year %>-present, [<%= author.name %>](<%= author.url %>) `<%= author.email %>` & [contributors](#wonderful-contributors).  
-Released under the [<%= license.name %> License][license-url].
+Copyright (c) {%= licenseStart %}-present, [<%= author.name %>](<%= author.url %>) `<<%= author.email %>>` & [contributors](#wonderful-contributors).  
+Released under the [{%= license %} License][license-url].
 
 <!-- Heading badges -->
 
 [npmv-url]: https://www.npmjs.com/package/{%= name %}
-[npmv-img]: https://badgen.net/npm/v/{%= name %}icon=npm
+[npmv-img]: https://badgen.net/npm/v/{%= name %}?icon=npm
 
 [ghrelease-url]: https://github.com/{%= repository %}/releases/latest
 [ghrelease-img]: https://badgen.net/github/release/{%= repository %}?icon=github
@@ -163,6 +161,6 @@ Released under the [<%= license.name %> License][license-url].
 [patreon-img]: https://badgen.net/badge/patreon/<%= author.login %>/F96854?icon=patreon
 [patreon-sponsor-img]: https://badgen.net/badge/become/a%20sponsor/F96854?icon=patreon
 
-[shareu]: https://twitter.com/intent/tweet?text=https://github.com/{%= repository %}&via=<%= author.twitter %>
+[shareu]: https://twitter.com/intent/tweet?text=https://github.com/{%=repository%}&via=<%= author.twitter %>
 [shareb]: https://badgen.net/badge/twitter/share/1da1f2?icon=twitter
 [open-issue-url]: https://github.com/{%= repository %}/issues/new
