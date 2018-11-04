@@ -3,7 +3,9 @@
 const proc = require('process');
 const mri = require('mri');
 const set = require('set-value');
+const objectAssign = require('object-assign-deep');
 
+const defaults = require('./src/default');
 const pkg = require('./package.json');
 const charlike = require('./index');
 
@@ -29,6 +31,7 @@ function showHelp() {
     --project.description     Project description.
     --project.author.name     Project's author name.
     --cwd                     Folder to be used as current working dir.
+    --ly                      Set --locals.license.year, just a shortcut.
 
   Examples:
     charlike --project.name foobar --project.author 'John Snow'
@@ -57,14 +60,18 @@ const options = Object.keys(argv).reduce((acc, key) => {
   return acc;
 }, {});
 
-const name = argv._[0];
-const desc = argv._[1];
+const name = argv._[0] || options.name;
+const desc = argv._[1] || options.desc;
 
-options.locals = Object.assign({}, options.locals);
-options.project = Object.assign({}, options.project);
-options.project.name = name || options.project.name;
-options.project.description = desc;
-options.project.owner = options.owner;
+options.locals = objectAssign({}, defaults.locals, options.locals);
+options.locals.license.year = argv.ly || options.locals.license.year;
+options.project = objectAssign(
+  {},
+  defaults.project,
+  options.locals.project,
+  options.project,
+  { name, desc, description: desc, owner: options.owner },
+);
 
 if (!options.project.name) {
   console.error('At least project name is required.');

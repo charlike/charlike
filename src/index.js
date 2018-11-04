@@ -7,12 +7,13 @@ import JSTransformer from 'jstransformer';
 import transformer from 'jstransformer-jstransformer';
 import fastGlob from 'fast-glob';
 import arrayify from 'arrify';
+import objectAssign from 'object-assign-deep';
 import { __dirname } from './cjs-globals';
 
 const jstransformer = JSTransformer(transformer);
 
 export default async function charlike(settings) {
-  const options = Object.assign({ engine: 'lodash' }, settings);
+  const options = objectAssign({ engine: 'lodash' }, settings);
   const { project, templates, cwd } = options;
 
   if (!project || (project && typeof project !== 'object')) {
@@ -25,6 +26,7 @@ export default async function charlike(settings) {
   }
 
   project.dest = path.join(cwd || proc.cwd(), project.dest);
+  project.repo = path.basename(project.dest);
 
   const cfgDir = path.join(os.homedir(), '.config', 'charlike');
   const tplDir = path.join(cfgDir, 'templates');
@@ -42,11 +44,14 @@ export default async function charlike(settings) {
     throw new Error(`source templates folder not exist: ${project.templates}`);
   }
 
-  const locals = Object.assign({}, options.locals, { project });
+  const locals = objectAssign(
+    { repository: `${project.owner}/${project.repo}` },
+    options.locals,
+    { project },
+  );
 
   const stream = fastGlob.stream('**/*', {
     cwd: project.templates,
-    absolute: true,
     ignore: arrayify(null),
   });
 
@@ -58,26 +63,34 @@ export default async function charlike(settings) {
       // Feels like nothing happend since v0.10.
       // For proof, `process.exit` from inside the `.then` in the CLI,
       // it will end/close the program before even create the dest folder.
+      // One more proof: put one console.log in stream.on('data')
+      // and you will see that it still outputs even after calling the resolve()
       resolve({ locals, project });
     });
     stream.on('data', async (filepath) => {
       try {
+        const tplFilepath = path.join(project.templates, filepath);
         const { body } = await jstransformer.renderFileAsync(
-          filepath,
+          tplFilepath,
           { engine: options.engine },
           locals,
         );
 
+        const newFilepath = path
+          .join(project.dest, filepath)
+          .replace('_circleci', '.circleci');
+
         const basename = path
-          .basename(filepath)
+          .basename(newFilepath)
           .replace(/^__/, '')
           .replace(/^\$/, '')
           .replace(/^_/, '.');
 
-        const fp = path.join(project.dest, basename);
+        const fp = path.join(path.dirname(newFilepath), basename);
+        const fpDirname = path.dirname(fp);
 
-        if (!fs.existsSync(project.dest)) {
-          await util.promisify(fs.mkdir)(project.dest);
+        if (!fs.existsSync(fpDirname)) {
+          await util.promisify(fs.mkdir)(fpDirname);
         }
 
         await util.promisify(fs.writeFile)(fp, body);

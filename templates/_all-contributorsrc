@@ -1,0 +1,27 @@
+{
+  "projectName": "<%= project.repo %>",
+  "projectOwner": "<%= project.owner %>",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 120,
+  "commit": false,
+  "contributorsPerLine": 6,
+  "contributors": [
+    {
+      "login": "<%= author.login %>",
+      "name": "<%= author.name %>",
+      "avatar_url": "<%= author.avatar %>",
+      "profile": "<%= author.url %>",
+      "contributions": [
+        "code",
+        "doc",
+        "question",
+        "review",
+        "fundingFinding"
+      ]
+    }
+  ]
+}

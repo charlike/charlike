@@ -1,6 +1,5 @@
 dist
-charlike
-templates
+<%= project.dest %>
 
 # Lockfiles. We use Yarn (https://yarnpkg.com/)
 package-lock.json
