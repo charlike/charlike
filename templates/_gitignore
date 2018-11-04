@@ -1,5 +1,5 @@
 dist
-<%= project.dest %>
+<%= project.repo %>
 
 # Lockfiles. We use Yarn (https://yarnpkg.com/)
 package-lock.json
