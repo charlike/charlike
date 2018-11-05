@@ -114,8 +114,8 @@ Consider showing your [support](#support-the-project) to them. :sparkling_heart:
 
 ## License
 
-Copyright (c) {%= licenseStart %}-present, [<%= author.name %>](<%= author.url %>) `<<%= author.email %>>` & [contributors](#wonderful-contributors).  
-Released under the [{%= license %} License][license-url].
+Copyright (c) <%= license.year %>-present, [<%= author.name %>](<%= author.url %>) `<<%= author.email %>>` & [contributors](#wonderful-contributors).  
+Released under the [<%= license.name %> License][license-url].
 
 <!-- Heading badges -->
 

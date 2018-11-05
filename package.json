@@ -1,6 +1,6 @@
 {
   "name": "charlike",
-  "description": "Small, fast and streaming project scaffolder with support for hunderds of template engines and sane defaults",
+  "description": "Small, fast and streaming project scaffolder with support for hundreds of template engines and sane defaults",
   "license": "Apache-2.0",
   "licenseStart": "2016",
   "scripts": {
