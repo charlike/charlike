@@ -23,8 +23,8 @@
     "jstransformer": "^1.0.0",
     "jstransformer-jstransformer": "^1.1.6",
     "jstransformer-lodash": "^0.3.2",
+    "mixin-deep": "^2.0.0",
     "mri": "^1.1.1",
-    "object-assign-deep": "^0.4.0",
     "set-value": "^3.0.0",
     "year": "^0.2.1"
   },
@@ -43,7 +43,7 @@
   "main": "index.js",
   "module": "src/index.js",
   "typings": "src/index.d.ts",
-  "version": "3.0.0-beta",
+  "version": "3.0.0-beta.rc2",
   "repository": "tunnckoCoreLabs/charlike",
   "homepage": "https://github.com/tunnckoCoreLabs/charlike",
   "author": "Charlike Mike Reagent (https://tunnckocore.com)",

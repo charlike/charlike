@@ -3,7 +3,7 @@
 const proc = require('process');
 const mri = require('mri');
 const set = require('set-value');
-const objectAssign = require('object-assign-deep');
+const mixinDeep = require('mixin-deep');
 
 const defaults = require('./src/defaults');
 const pkg = require('./package.json');
@@ -63,15 +63,16 @@ const options = Object.keys(argv).reduce((acc, key) => {
 const name = argv._[0] || options.name;
 const desc = argv._[1] || options.desc;
 
-options.locals = objectAssign({}, defaults.locals, options.locals);
+options.locals = mixinDeep({}, defaults.locals, options.locals);
 options.locals.license.year = argv.ly || options.locals.license.year;
-options.project = objectAssign(
+options.project = mixinDeep(
   {},
   defaults.project,
   options.locals.project,
   options.project,
-  { name, desc, description: desc, owner: options.owner },
+  { name, desc, description: desc },
 );
+options.project.owner = options.owner || options.project.owner;
 
 if (!options.project.name) {
   console.error('At least project name is required.');

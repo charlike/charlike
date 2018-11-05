@@ -7,7 +7,7 @@ import JSTransformer from 'jstransformer';
 import transformer from 'jstransformer-jstransformer';
 import fastGlob from 'fast-glob';
 import arrayify from 'arrify';
-import objectAssign from 'object-assign-deep';
+import objectAssign from 'mixin-deep';
 import { __dirname } from './cjs-globals';
 
 const jstransformer = JSTransformer(transformer);
