@@ -2,10 +2,6 @@
 
 const proc = require('process');
 const mri = require('mri');
-const set = require('set-value');
-const mixinDeep = require('mixin-deep');
-
-const defaults = require('./src/defaults');
 const pkg = require('./package.json');
 const charlike = require('./index');
 
@@ -49,32 +45,16 @@ const argv = mri(proc.argv.slice(2), {
   alias: {
     v: 'version',
     h: 'help',
-    o: 'owner',
-    d: 'desc',
+    'project.name': ['n', 'name'],
+    'project.owner': ['o', 'owner'],
+    'project.description': ['d', 'desc', 'description'],
     t: 'templates',
   },
 });
 
-const options = Object.keys(argv).reduce((acc, key) => {
-  set(acc, key, argv[key]);
-  return acc;
-}, {});
+argv.name = argv._[0] || argv.name;
 
-const name = argv._[0] || options.name;
-const desc = argv._[1] || options.desc;
-
-options.locals = mixinDeep({}, defaults.locals, options.locals);
-options.locals.license.year = argv.ly || options.locals.license.year;
-options.project = mixinDeep(
-  {},
-  defaults.project,
-  options.locals.project,
-  options.project,
-  { name, desc, description: desc },
-);
-options.project.owner = options.owner || options.project.owner;
-
-if (!options.project.name) {
+if (!argv.name) {
   console.error('At least project name is required.');
   console.error(showHelp());
   proc.exit(1);
@@ -92,9 +72,13 @@ if (argv.version) {
 
 /* eslint-disable promise/always-return */
 
-charlike(options)
-  .then(({ project = {} } = {}) => {
-    console.log('Project is generated at', project.dest);
+argv.project = Object.assign({}, argv.project);
+
+// const options = makeDefaults(argv);
+charlike(argv)
+  .then((result = {}) => {
+    console.log(result);
+    console.log('Project is generated at', result.project.dest);
   })
   .catch((err) => {
     console.error('Oooh! Some error occured.');

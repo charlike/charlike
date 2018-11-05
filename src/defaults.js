@@ -1,10 +1,15 @@
+const path = require('path');
+const proc = require('process');
 const year = require('year');
+const setValue = require('set-value');
+const mixinDeep = require('mixin-deep');
 const gitUserName = require('git-user-name');
 const gitUserEmail = require('git-user-email');
 
-module.exports = {
+const defaults = {
+  engine: 'lodash',
   project: {
-    owner: 'tunnckoCore',
+    owner: 'tunnckoCoreLabs',
   },
   locals: {
     deps: `${JSON.stringify({ esm: '^3.0.84' }, null, 4).slice(0, -1)}  }`,
@@ -32,4 +37,31 @@ module.exports = {
     },
     license: { name: 'Apache-2.0', year: year() },
   },
+};
+
+module.exports = (argv = {}) => {
+  const options = Object.keys(argv).reduce((acc, key) => {
+    setValue(acc, key, argv[key]);
+    return acc;
+  }, {});
+
+  const name = (argv._ && argv._[0]) || options.name;
+  const desc = (argv._ && argv._[1]) || options.description;
+
+  const opts = mixinDeep(
+    { project: { name, description: desc } },
+    defaults,
+    options,
+  );
+
+  if (typeof opts.project.dest !== 'string') {
+    opts.project.dest = opts.project.name.startsWith('@')
+      ? opts.project.name.split('/')[1]
+      : opts.project.name;
+  }
+
+  opts.project.dest = path.join(opts.cwd || proc.cwd(), opts.project.dest);
+  opts.project.repo = path.basename(opts.project.dest);
+  opts.locals.repository = `${opts.project.owner}/${opts.project.repo}`;
+  return opts;
 };

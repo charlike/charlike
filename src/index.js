@@ -2,31 +2,25 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import util from 'util';
-import proc from 'process';
 import JSTransformer from 'jstransformer';
 import transformer from 'jstransformer-jstransformer';
 import fastGlob from 'fast-glob';
 import arrayify from 'arrify';
 import objectAssign from 'mixin-deep';
 import { __dirname } from './cjs-globals';
+import makeDefaults from './defaults';
 
 const jstransformer = JSTransformer(transformer);
 
-export default async function charlike(settings) {
-  const options = objectAssign({ engine: 'lodash' }, settings);
-  const { project, templates, cwd } = options;
+export default async function charlike(settings = {}) {
+  const proj = settings.project;
 
-  if (!project || (project && typeof project !== 'object')) {
+  if (!proj || (proj && typeof proj !== 'object')) {
     throw new TypeError('expect `settings.project` to be an object');
   }
-  if (typeof project.dest !== 'string') {
-    project.dest = project.name.startsWith('@')
-      ? project.name.split('/')[1]
-      : project.name;
-  }
 
-  project.dest = path.join(cwd || proc.cwd(), project.dest);
-  project.repo = path.basename(project.dest);
+  const options = makeDefaults(settings);
+  const { project, templates } = options;
 
   const cfgDir = path.join(os.homedir(), '.config', 'charlike');
   const tplDir = path.join(cfgDir, 'templates');
@@ -44,11 +38,7 @@ export default async function charlike(settings) {
     throw new Error(`source templates folder not exist: ${project.templates}`);
   }
 
-  const locals = objectAssign(
-    { repository: `${project.owner}/${project.repo}` },
-    options.locals,
-    { project },
-  );
+  const locals = objectAssign({}, options.locals, { project });
 
   const stream = fastGlob.stream('**/*', {
     cwd: project.templates,
