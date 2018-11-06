@@ -7,7 +7,7 @@ const gitUserName = require('git-user-name');
 const gitUserEmail = require('git-user-email');
 const packageJson = require('@tunnckocore/package-json');
 
-const get = async (name, field) => (await packageJson.default(name))[field];
+const get = async (name, field) => (await packageJson(name))[field];
 
 const defaults = {
   engine: 'lodash',
