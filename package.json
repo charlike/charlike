@@ -15,7 +15,7 @@
     "node": "^8.11.0 || >=10.13.0"
   },
   "dependencies": {
-    "@tunnckocore/package-json": "^0.3.1",
+    "@tunnckocore/package-json": "^0.4.0",
     "arrify": "^1.0.1",
     "esm": "^3.0.84",
     "fast-glob": "^2.2.3",
