@@ -133,10 +133,10 @@
     p-map-series "1.0.0"
     split-cmd "^1.0.0"
 
-"@tunnckocore/package-json@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@tunnckocore/package-json/-/package-json-0.3.1.tgz#254cbce4b33f5d8bfab098c63033385ab748d4f2"
-  integrity sha512-hVaCtkNamSMPfjtK04miuUPDE6/vj0oZfuzQJYY+tJ7wGKhhQq5I//TtbL128bQvyDX5ivs8dPb03gclYU2bhA==
+"@tunnckocore/package-json@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/package-json/-/package-json-1.0.0.tgz#920337164c98776228aa1fc9931a6d60203d6256"
+  integrity sha512-5p17cM+p65+fmawiu34Vi1P0po42FyNVyIKfmTDs6kcCk9pkUl0jm0V+g2q4ZxTPCdoCzzgzjYieYo/972tGRw==
   dependencies:
     axios "^0.18.0"
     esm "^3.0.84"
