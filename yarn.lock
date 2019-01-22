@@ -25,14 +25,10 @@
     p-map-series "^1.0.0"
     split-cmd "^1.0.0"
 
-"@tunnckocore/package-json@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@tunnckocore/package-json/-/package-json-1.0.3.tgz#93fccf6d504f38d5c0db581607a0402de06c5d41"
-  integrity sha512-BSpZbuoHtnpuBhZV1cWZSD6G7BKc6l3ogw1mJTyviOsck5iGxbDtplmV6OA3vwpYJcJ5tOOWARiy7A+4aW88LA==
-  dependencies:
-    axios "^0.18.0"
-    esm "^3.0.84"
-    parse-package-name "^0.1.0"
+"@tunnckocore/package-json@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/package-json/-/package-json-2.0.0.tgz#4bf0e3ff4ef47cf893682c5141bd7fca88c8c291"
+  integrity sha512-nKbVQuCEgEWSESgo0oIBdibAvj/1n1VAWqC0c4yhT+tfvVAt3zPGxWpDsDoKn/RXJaH6mbwgNz1QpACW/UfRJA==
 
 "@tunnckocore/scripts@^1.2.5":
   version "1.2.5"
@@ -95,14 +91,6 @@ atob@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
-
-axios@^0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
-  integrity sha1-MtU+SFHv3AoRmTts0AB4nXDAUQI=
-  dependencies:
-    follow-redirects "^1.3.0"
-    is-buffer "^1.1.5"
 
 base@^0.11.1:
   version "0.11.2"
@@ -191,13 +179,6 @@ cross-spawn@^6.0.0:
     semver "^5.5.0"
     shebang-command "^1.2.0"
     which "^1.2.9"
-
-debug@=3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
-  integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
-  dependencies:
-    ms "2.0.0"
 
 debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"
@@ -321,13 +302,6 @@ fill-range@^4.0.0:
     is-number "^3.0.0"
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
-
-follow-redirects@^1.3.0:
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
-  integrity sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
-  dependencies:
-    debug "=3.1.0"
 
 for-in@^1.0.2:
   version "1.0.2"
@@ -809,11 +783,6 @@ parse-git-config@^1.0.2, parse-git-config@^1.1.1:
     fs-exists-sync "^0.1.0"
     git-config-path "^1.0.1"
     ini "^1.3.4"
-
-parse-package-name@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/parse-package-name/-/parse-package-name-0.1.0.tgz#3f44dd838feb4c2be4bf318bae4477d7706bade4"
-  integrity sha1-P0Tdg4/rTCvkvzGLrkR313BrreQ=
 
 parse-passwd@^1.0.0:
   version "1.0.0"
