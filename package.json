@@ -22,7 +22,7 @@
     "@tunnckocore/package-json": "^1.0.3",
     "arrify": "^2.0.0",
     "esm": "^3.0.84",
-    "fast-glob": "^2.2.4",
+    "fast-glob": "^3.0.0",
     "git-user-email": "^0.2.2",
     "git-user-name": "^2.0.0",
     "jstransformer": "^1.0.0",
